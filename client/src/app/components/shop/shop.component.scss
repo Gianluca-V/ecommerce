@@ -1,0 +1,26 @@
+@use '../../../styles.scss' as common;
+
+.filters{
+    &__form{
+        @include common.flex(row,space-evenly,center);
+        width: 100%;
+        border-bottom: 1px var(--text) solid;
+        padding: 10px;
+    }
+    &__price{
+        @include common.flex(row,space-around,center);
+        width: 15%;
+    }
+}
+
+.products{
+    display: grid;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%, 20rem),1fr));;
+    &__div{
+        width: 100%;
+        height: 100%;
+    }
+    &__img{
+        width: 100%;
+    }
+}

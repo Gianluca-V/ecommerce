@@ -1,0 +1,32 @@
+<div class="filters">
+    <form [formGroup]="filters" class="filters__form">
+        <select name="filters__category" class="filters__category" formControlName="category"> 
+            <option>All categories</option>
+            <option *ngFor="let category of categories">{{category}}</option> 
+        </select>
+
+        <div class="filters__price">
+            <div class="filters__min-price">{{minPrice | currency}}</div>
+            <input type="range" name="price-range" formControlName="maxPrice" min="{{minPrice}}" max="{{maxPrice}}" value="{{maxPrice}}">
+            <div class="filters__max-price">{{selectedMaxPrice | currency}}</div>
+        </div>
+        
+    </form>
+</div>
+
+<div class="products">
+    <div class="products__div" *ngFor="let product of products">
+        <img src="{{product.image}}" alt="product-image" class="product__img">
+        <div class="product__data">
+            <div class="product__data__div">
+                <h4 class="product__name">{{product.name}}</h4>
+                <p class="product__description">{{product.description}}</p>
+            </div>
+            <div class="product__data__div">
+                <span class="product__price">{{product.price | currency}}</span>
+                <button class="product__btn">Buy</button>
+            </div>
+        </div>
+        
+    </div>
+</div>

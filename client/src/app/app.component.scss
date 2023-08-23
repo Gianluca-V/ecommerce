@@ -1,0 +1,197 @@
+@use '../styles.scss' as common;
+
+.header {
+    @include common.flex(row, space-between, center);
+    position: fixed;
+    width: 100%;
+    background-color: var(--background);
+    max-height: 100px;
+    border-bottom: 1px var(--text) solid;
+    font-size: common.$fs5;
+    color: var(--text);
+    z-index: 9;
+
+    @include common.screenM() {
+        position: relative;
+    }
+
+    @include common.screenXL() {
+        position: relative;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .logo {
+        &__button {
+            @include common.screenXL() {
+                cursor: initial;
+            }
+        }
+
+        &__img {
+            padding: 10px;
+            max-height: 100px;
+            object-fit: cover;
+        }
+
+    }
+
+    .nav {
+        position: absolute;
+        width: 40%;
+        height: 100vh;
+        top: 100px;
+        left: -100%;
+        background-color: var(--background);
+        box-shadow: 0px 0px 25px black;
+        transition: left .5s ease;
+
+        &__ul {
+            margin-top: 10%;
+            height: max(33%, 300px);
+            @include common.flex(column, space-around, center);
+        }
+
+        &__a {
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px var(--text) solid;
+        }
+
+        &__li {
+            position: relative;
+            display: block;
+
+            &::after {
+                transition: .3s width ease;
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                content: '';
+                width: 0%;
+                height: 5px;
+                background-color: var(--accent);
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        @media (height < 400px) {
+            width: 100%;
+            height: 50vh;
+
+            &__ul {
+                margin: 0;
+                height: 100%;
+                z-index: 5;
+                @include common.flex(row, space-around, center);
+            }
+            &__a {
+                text-align: center;
+                width: 30%;
+                border-bottom: 1px black solid;
+            }
+        }
+
+        @include common.screenXL() {
+            position: initial;
+            text-align: center;
+            margin: 0;
+            height: 100%;
+            background-color: transparent;
+            box-shadow: none;
+            min-width: 350px;
+
+            &__ul {
+                height: 100%;
+                margin: 0;
+                @include common.flex(row, space-around, center);
+            }
+
+            &__a {
+                padding-inline: 10px;
+                height: 100%;
+                border-bottom: none;
+            }
+        }
+
+        @include common.screenM() {
+            position: initial;
+            text-align: center;
+            margin: 0;
+            height: 100%;
+            background-color: transparent;
+            box-shadow: none;
+            min-width: 350px;
+
+            &__ul {
+                height: 100%;
+                margin: 0;
+                @include common.flex(row, space-around, center);
+            }
+
+            &__a {
+                padding-inline: 10px;
+                height: 100%;
+                border-bottom: none;
+            }
+        }
+    }
+
+    .profile {
+        font-size: common.$fs5;
+        font-weight: 400;
+        padding-inline: 1.4rem;
+        border-left: 1px var(--text) solid;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        color: var(--background);
+
+        .button--log-in {
+            background-color: var(--primary);
+            min-width: 100px;
+            height: 50%;
+            padding-inline: 1.4rem;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: var(--accent);
+            }
+        }
+    }
+}
+
+.nav-active {
+    @include common.screenXS() {
+        left: 0% !important;
+        
+    }
+
+}
+
+.theme-icon{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 1px;
+    transition: transform 0.2s ease;
+    z-index: 99;
+    cursor: pointer;
+    .theme__img{
+        width: 75%; 
+        transition: transform 0.5s ease;
+    }
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.darkMode-button{
+    transform: rotate(180deg);
+    filter: invert(1);
+}

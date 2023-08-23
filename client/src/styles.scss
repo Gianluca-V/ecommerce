@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+$fs1: 3.052rem;
+$fs2: 2.441rem;
+$fs3: 1.953rem;
+$fs4: 1.563rem;
+$fs5: 1.250rem;
+$fs6: 1.000rem;
+$fs7: 0.800rem;
+
+
+$lightText: #050505;
+$lightBackground: #fafafa;
+$lightPrimary: #0b31cb;
+$lightSecondary: #cfd8fc;
+$lightAccent: #1e45e1;
+
+$darkText: #fafafa;
+$darkBackground: #050505;
+$darkPrimary: #0b31cb;
+$darkSecondary: #030c30;
+$darkAccent: #788fed;
+
+
+.darkMode {
+    --text: #fafafa;
+    --background: #050505;
+    --primary: #0b31cb;
+    --secondary: #030c30;
+    --accent: #788fed;
+}
+
+
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+:root {
+    --text: #050505;
+    --background: #fafafa;
+    --primary: #0b31cb;
+    --secondary: #cfd8fc;
+    --accent: #1e45e1;
+}
+
+
+@mixin screenXS() {
+    @media (width < 600px) {
+        @content;
+    }
+}
+
+@mixin screenM() {
+    @media (width > 600px) and (width < 850px) {
+        @content;
+    }
+}
+
+@mixin screenXL() {
+    @media (width > 850px) {
+        @content;
+    }
+}
+
+@mixin screen($width) {
+    @if($width > 0) {
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    }
+
+    @if($width < 0) {
+        $width: -1 * $width;
+
+        @media screen and (max-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin flex($direction: row, $justify: initial, $align: initial) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: backgorund 0.5s ease, color 0.1s ease;
+}
+
+button,
+input {
+    padding: 0;
+    margin: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text);
+}

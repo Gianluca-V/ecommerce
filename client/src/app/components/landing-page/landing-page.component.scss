@@ -1,0 +1,248 @@
+@use '../../../styles.scss' as common;
+
+.landing-page {
+    @include common.screenXS() {
+        padding-top: 100px;
+    }
+    color: var(--text);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &__div {
+        height: 100%;
+        min-height: 300px;
+
+        //border:1px black solid;
+        &--accent {
+            background-color: var(--primary);
+            color: var(--background);
+            @include common.flex(column, space-around, center);
+
+            p {
+                padding: 0;
+                width: 66%;
+            }
+        }
+
+        &:nth-of-type(4) {
+            display: none;
+        }
+
+        &:nth-of-type(3) {
+            display: none;
+        }
+
+        &:nth-of-type(1) {
+            display: none;
+        }
+    }
+
+    
+
+
+    @include common.screenXL() {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+
+        &__div {
+            &:nth-of-type(odd) {
+                grid-row: 1 / 3;
+            }
+
+            &:nth-of-type(1) {
+                padding-inline: 10%;
+                padding-block: 20%;
+                text-align: justify;
+                display: block;
+            }
+
+            &:nth-of-type(2) {
+                @include common.flex(column, space-around, center);
+            }
+
+            &:nth-of-type(3) {
+                display: block;
+            }
+
+            &:nth-of-type(4) {
+                display: block;
+            }
+
+        }
+
+        &__h3 {
+            font-size: min(common.$fs1, 4.5vw);
+            font-weight: 900;
+            margin-bottom: 2.5%;
+            text-align: left;
+        }
+
+        &__h5 {
+            font-size: common.$fs3;
+            font-weight: 600;
+            line-height: 120%;
+        }
+
+        &__p {
+            padding-right: 25%;
+        }
+    }
+
+    @include common.screenM() {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+
+        &__div {
+            &:nth-of-type(odd) {
+                grid-row: 1 / 3;
+            }
+
+            &:nth-of-type(3) {
+                display: block;
+            }
+        }
+
+    }
+
+
+
+    &__img {
+        width: 100%;
+    }
+
+    &__img--center {
+        height: 100%;
+    }
+
+    &__span--shop {
+        font-size: common.$fs4;
+        color: var(--background);
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    &__img--bottom {
+        max-width: 300px;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__discount {
+        font-size: common.$fs3;
+        line-height: 2rem;
+        @include common.flex(column, center, center);
+        background-color: var(--secondary);
+        padding: 1.5rem;
+        color: var(--text);
+        font-weight: 600;
+    }
+    
+    @include common.screen(-310px) {
+        &__discount {
+            font-size: common.$fs4;
+            line-height: 1.5rem;
+            @include common.flex(column, center, center);
+            background-color: var(--secondary);
+            padding: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+        &__p {
+            font-size: common.$fs6;
+            font-weight: 300;
+        }
+    }
+
+
+    .carousel {
+        position: relative;
+        height: 100%;
+        @include common.flex(column, space-around, center);
+
+        &__div {
+            position: absolute;
+            opacity: 0;
+            @include common.flex(column, center, center);
+            height: 100%;
+        }
+
+        &__h3 {
+            font-size: min(common.$fs1, 4.5vw);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        &__p {
+            width: 66%;
+            font-size: common.$fs5;
+            text-align: center;
+        }
+    }
+
+
+
+    .slider {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: none;
+        @include common.flex(row, center, center);
+
+        &__products {
+            background: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            @include common.flex(column, center, center);
+            background-color: var(--background);
+            font-size: common.$fs4;
+        }
+
+        &__img {
+            background: none;
+            object-fit: cover;
+            max-width: 90%;
+            height: 300px;
+            margin-bottom: 20%;
+            transform-style: preserve-3d;
+        }
+
+        &__text {
+            text-align: center;
+        }
+
+        @for $i from 0 to 3 {
+            .slider__products:nth-child(#{$i+1}) {
+                left: 100% * $i;
+            }
+        }
+
+        @include common.screenXS() {
+            &__products {
+                @include common.flex(row, center, center);
+            }
+
+            &__img {
+                background: none;
+                object-fit: cover;
+                max-width: 90%;
+                height: 250px;
+                margin-bottom: 0%;
+            }
+        }
+
+        @include common.screen(-420px) {
+            &__img {
+                width: 50vw;
+                height: 20vh;
+                object-fit: contain;
+            }
+
+            &__text {
+                font-size: common.$fs5;
+            }
+        }
+    }
+}

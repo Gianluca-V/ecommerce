@@ -1,0 +1,45 @@
+<div class="landing-page">
+    <div class="landing-page__div">
+        <h3 class="landing-page__h3">Technology To Change Your World<span class="underscore-anim">_</span></h3>
+        <p class="landing-page__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum laboriosam quia iste, porro rem natus totam, mollitia id facilis iusto expedita accusantium</p>
+    </div>
+    <div class="landing-page__div landing-page__div--accent">
+        <h3 class="landing-page__h5">Special Offer</h3>
+        <p class="landing-page__p">Sign up now and recieve a 25% off your first order. Its the perfect opportunity to put your hands on edge technology</p>
+        <span class="landing-page__discount">25% <span>OFF</span></span>
+    </div>
+    <div class="landing-page__div">
+        <img src="{{centerProduct?.image}}" alt="Samsung S22 Image" class="landing-page__img landing-page__img--center">
+    </div>
+    <div class="landing-page__div">
+        <div class="carousel">
+            <div class="carousel__div">
+                <h3 class="carousel__h3">Computers</h3>
+                <p class="carousel__p">Unleash productivity and creativity with cutting-edge computers and notebooks. Power your ideas.</p>
+            </div>
+            <div class="carousel__div">
+                <h3 class="carousel__h3">Smartphones</h3>
+                <p class="carousel__p">Discover the future in your hands - powerful smartphones for seamless connectivity and unrivaled performance.</p>
+            </div>
+            <div class="carousel__div">
+                <h3 class="carousel__h3">Accesories</h3>
+                <p class="carousel__p">Elevate your tech game with top-notch accessories - headphones, smartwatches, cameras, and more. Unleash possibilities.</p>
+            </div>
+        </div>
+    </div>
+    <div class="landing-page__div">
+        <div class="slider">
+            <div class="slider__products" *ngFor="let product of smartwatchs" data-tilt data-tilt-reverse="true">
+                <img src="{{product.image}}" alt="product image" class="slider__img" >
+                <div class="slider__text">
+                    <h4 class="slider__h4" >{{product.name}}</h4>
+                    <span class="slider__price" >{{product.price | currency}}</span>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="landing-page__div landing-page__div--accent" >
+        <img src="{{bottomProduct?.image}}" alt="produt image" class="landing-page__img landing-page__img--bottom">
+        <span class="landing-page__span landing-page__span--shop">SHOP NOW</span>
+    </div>
+</div>
